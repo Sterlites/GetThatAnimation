@@ -53,7 +53,7 @@ export function AnimationPreview() {
   }
 
   return (
-    <Card className="mb-8">
+    <div className="mb-8">
       <CardHeader>
         <CardTitle>Animation Preview</CardTitle>
       </CardHeader>
@@ -69,14 +69,14 @@ export function AnimationPreview() {
           <TabsContent value="preview">
             <div className="border p-4 rounded-md">
               <style dangerouslySetInnerHTML={{ __html: scannedData.styles }} />
-              {scannedData.animatedElements.map((el, index) => (
+              {scannedData?.animatedElements?.map((el, index) => (
                 <div key={index} dangerouslySetInnerHTML={{ __html: el.html }} />
               ))}
             </div>
           </TabsContent>
           <TabsContent value="html">
             <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
-              {scannedData.animatedElements.map((el) => el.html).join('\n')}
+              {scannedData?.animatedElements?.map((el) => el.html).join('\n') || ''}
             </pre>
           </TabsContent>
           <TabsContent value="css">
@@ -86,7 +86,7 @@ export function AnimationPreview() {
           </TabsContent>
           <TabsContent value="js">
             <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
-              {scannedData.scripts.map((script) => script.content || `// External script: ${script.src}`).join('\n\n')}
+              {scannedData?.scripts ? scannedData.scripts.map((script) => script.content || `// External script: ${script.src}`).join('\n\n') : ''}
             </pre>
           </TabsContent>
           <TabsContent value="compatibility">
@@ -104,7 +104,7 @@ export function AnimationPreview() {
               <AlertTitle>Browser Compatibility</AlertTitle>
               <AlertDescription>
                 <ul>
-                  {Object.entries(scannedData.browserCompatibility).map(([browser, isCompatible]) => (
+                  {scannedData?.browserCompatibility ? Object.entries(scannedData.browserCompatibility).map(([browser, isCompatible]) => (
                     <li key={browser} className="flex items-center">
                       {isCompatible ? (
                         <CheckCircle className="mr-2 text-green-500" />
@@ -113,13 +113,13 @@ export function AnimationPreview() {
                       )}
                       {browser.charAt(0).toUpperCase() + browser.slice(1)}
                     </li>
-                  ))}
+                  )) : null}
                 </ul>
               </AlertDescription>
             </Alert>
           </TabsContent>
         </Tabs>
       </CardContent>
-    </Card>
+    </div>
   );
 }
