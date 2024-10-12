@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState } from 'react';
 import { Input } from '@/components/ui/input';
@@ -32,13 +32,13 @@ export function URLInput() {
 
       toast({
         title: "URL Scanned Successfully",
-        description: `Found ${data.animatedElements.length} animated elements`,
+        children: <p>Found {data.animatedElements.length} animated elements</p>,
       });
     } catch (error) {
       console.error('Error scanning URL:', error);
       toast({
         title: "Error",
-        description: error instanceof Error ? error.message : "Failed to scan URL. Please try again.",
+        children: <p>{error instanceof Error? error.message : "Failed to scan URL. Please try again."}</p>,
         variant: "destructive",
       });
     } finally {
@@ -57,7 +57,7 @@ export function URLInput() {
           required
         />
         <Button type="submit" disabled={isLoading}>
-          {isLoading ? 'Scanning...' : 'Scan'}
+          {isLoading? 'Scanning...' : 'Scan'}
         </Button>
       </div>
     </form>

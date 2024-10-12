@@ -13,10 +13,10 @@ export function UserGuide() {
         <AccordionContent>
           <ol className="list-decimal list-inside space-y-2">
             <li>Enter the URL of a Next.js website in the input field.</li>
-            <li>Click the "Scan" button to analyze the animations on the page.</li>
+            <li>Click the &#34;Scan&#34; button to analyze the animations on the page.</li>
             <li>View the extracted animations in the preview section.</li>
             <li>Choose your preferred export format (React, Vanilla JS, or HTML/CSS/JS).</li>
-            <li>Click "Export Animation" to get the code for the extracted animations.</li>
+            <li>Click &#34;Export Animation&#34; to get the code for the extracted animations.</li>
             <li>Copy the exported code and integrate it into your project.</li>
           </ol>
         </AccordionContent>
